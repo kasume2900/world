@@ -1,0 +1,74 @@
+
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+
+:root {
+  --family : 'Nunito Sans', sans-serif;
+
+  --darkEl : hsl(209, 23%, 22%);
+  --darkBg : hsl(207, 26%, 17%);
+  --darkText : hsl(0, 0%, 100%);
+
+
+  --lightText : hsl(200, 15%, 8%);
+  --lightInput : hsl(0, 0%, 52%);
+  --lightBg : hsl(0, 0%, 98%);
+
+
+  --fz-normal : 14px;
+  --fz-md : 16px; 
+
+  --fw-light : 300;
+  --fw-normal : 600;
+  --fw-bold : 800;
+
+}
+
+body[data-theme='light'] {
+  --lightText : hsl(200, 15%, 8%);
+  --lightInput : hsl(0, 0%, 52%);
+  --lightBg : hsl(0, 0%, 98%);
+}
+
+body[data-theme='dark'] {
+  --darkEl : hsl(209, 23%, 22%);
+  --darkBg : hsl(207, 26%, 17%);
+  --darkText : hsl(0, 0%, 100%);
+}
