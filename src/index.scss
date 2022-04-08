@@ -42,16 +42,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 :root {
   --family : 'Nunito Sans', sans-serif;
 
-  --darkEl : hsl(209, 23%, 22%);
-  --darkBg : hsl(207, 26%, 17%);
-  --darkText : hsl(0, 0%, 100%);
-
-
-  --lightText : hsl(200, 15%, 8%);
-  --lightInput : hsl(0, 0%, 52%);
-  --lightBg : hsl(0, 0%, 98%);
-
-
   --fz-normal : 14px;
   --fz-md : 16px; 
 
@@ -61,14 +51,31 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 }
 
+body {
+  font-family: --family;
+}
+
 body[data-theme='light'] {
-  --lightText : hsl(200, 15%, 8%);
-  --lightInput : hsl(0, 0%, 52%);
-  --lightBg : hsl(0, 0%, 98%);
+  --colorText : hsl(200, 15%, 8%);
+  --colorInput : hsl(0, 0%, 52%);
+  --Bg : hsl(0, 0%, 98%);
+  --colorEl : hsl(195, 12%, 93%);
 }
 
 body[data-theme='dark'] {
-  --darkEl : hsl(209, 23%, 22%);
-  --darkBg : hsl(207, 26%, 17%);
-  --darkText : hsl(0, 0%, 100%);
+  --colorInput : hsl(0, 0%, 52%);
+  --colorEl : hsl(209, 23%, 22%);
+  --Bg : hsl(207, 26%, 17%);
+  --colorText : hsl(0, 0%, 100%);
+  background-color: var(--Bg);
+}
+
+header {
+  background-color: var(--colorEl);
+}
+
+.conteiner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 5px;
 }
