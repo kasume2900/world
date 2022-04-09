@@ -1,7 +1,6 @@
 .wrap {
   display: flex;
   align-items: center;
-  margin-top: 30px;
   position: relative;
 
   input{
@@ -14,6 +13,9 @@
     padding-left: 40px;
     border-radius: 5px;
     min-width: 300px;
+    @media (max-width : 453px) {
+      min-width: 100%;
+    }
   }
   .a {
     position: absolute;
