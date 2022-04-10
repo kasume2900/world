@@ -1,16 +1,19 @@
 
 .wrapper {
   max-width: 400px;
-  margin-right: 30px;
-  margin-bottom: 30px;
-
+  margin-right: 6rem;
+  margin-bottom: 70px;
+  cursor: pointer;
 
   .image{
 
     img{
-      width: 300px;
+      width: 270px;
       height: 200px;
       object-fit: cover;
+      @media (max-width : 1200px) {
+        
+      }
     }
   }
 
