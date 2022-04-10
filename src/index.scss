@@ -37,7 +37,7 @@ img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
-
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;800&display=swap');
 
 :root {
   --family : 'Nunito Sans', sans-serif;
@@ -52,7 +52,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 
 body {
-  font-family: --family;
+  font-family: 'Nunito', sans-serif;
 }
 
 body[data-theme='light'] {

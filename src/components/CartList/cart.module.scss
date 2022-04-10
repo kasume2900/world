@@ -1,0 +1,42 @@
+
+.wrapper {
+  max-width: 400px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+
+
+  .image{
+
+    img{
+      width: 300px;
+      height: 200px;
+      object-fit: cover;
+    }
+  }
+
+
+  .bottomWrap{
+    padding: 20px 10px;
+    color: var(--colorText);
+    font-size: var(--fz-normal);
+    background-color: var(--colorEl);
+    .name{
+      margin-bottom: 20px;
+      font-size: var(--fz-md);
+    }
+    .population{
+      margin-bottom: 10px;
+      span{}
+    }
+
+    .region{
+      margin-bottom: 10px;
+    }
+
+    .capital{
+      margin-bottom: 10px;
+    }
+  }
+
+
+}
