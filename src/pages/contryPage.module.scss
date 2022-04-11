@@ -1,13 +1,66 @@
 
 .buttonWrap {
-  
+  margin-bottom: 50px;
+  //position: relative;
   a{
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 130px;
     color: var(--colorText);
     background-color: var(--colorEl);
     padding: 10px 20px;
     border-radius: 5px;
     text-align: center;
+    margin-right: 10px;
+  }
+}
+
+
+.contentWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--colorText);
+
+  .image{
+    img {
+      display: block;
+      width: 550px;
+      object-fit: contain;
+      box-shadow: 0px -1px 8px 7px var(--colorEl);
+    }
+  }
+
+  .info {
+    width: 700px;
+
+    .name {
+      color: var(--colorText);
+      font-weight: var(--fw-bold);
+      //font-size: var(--fz-md);
+      font-size: 36px;
+      margin-bottom: 30px;
+    }
+
+    .borderContries{
+      font-size: 20px;
+    }
+
+    .infoRow {
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      .columLeft{
+        .item{
+          margin-bottom: 15px;
+        }
+      }
+      .columRight{
+        .item {
+          margin-bottom: 15px;
+        }
+      }
+    }
   }
 }

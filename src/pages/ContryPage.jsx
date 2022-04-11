@@ -1,29 +1,35 @@
 import React, { useEffect } from 'react'
+import { BsArrowLeft } from "react-icons/bs";
 import s from './contryPage.module.scss'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getInfo } from '../store/worldSlice'
 
 
+
 const ContryPage = () => {
 
-  const {name} = useParams()
+  const { name } = useParams()
   const dispatch = useDispatch()
 
   const info = useSelector(state => state.world.info)
 
   useEffect(() => {
     dispatch(getInfo(name))
-  },[name,dispatch])
+  }, [name, dispatch])
 
   return (
     <div className='conteiner'>
       <div className={s.buttonWrap}>
-        <Link to="/">Back</Link>
+        <Link to="/">
+        <BsArrowLeft style={{fontSize : '20px', color : 'var(--colorText)',marginRight: '10px'}} />
+          Back
+        </Link>
+        
       </div>
       <div className={s.contentWrap}>
         <div className={s.image}>
-           <img src={info.flags && info.flags.png} alt="flag" />
+          <img src={info.flags && info.flags.png} alt="flag" />
         </div>
         <div className={s.info}>
           <div className={s.name}>{info.name}</div>
@@ -53,16 +59,16 @@ const ContryPage = () => {
                 <span>Currencies :</span> {info.currencies && info.currencies.map(el => el.name)}
               </div>
               <div className={s.item}>
-                <span>Languages :</span> {info.languages && info.languages.map(el => el.name)} 
+                <span>Languages :</span> {info.languages && info.languages.map(el => el.name)}
               </div>
             </div>
           </div>
-        </div>
-        <div className={s.borderContries}>
-          <span>Border Contries :</span>
-          {
-            info.borders && info.borders.map(el => <Link to={`/${el}`} key={el}>{el}</Link>)
-          }
+          <div className={s.borderContries}>
+            <span>Border Contries :</span>
+            {
+              info.borders && info.borders.map(el => <Link to={`/${el}`} key={el}>{el}</Link>)
+            }
+          </div>
         </div>
       </div>
     </div>

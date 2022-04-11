@@ -24,6 +24,7 @@ export const getCountrys = createAsyncThunk(
   }
 )
 
+
 export const worldSlice = createSlice({
   name: 'world',
   initialState,
