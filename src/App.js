@@ -1,32 +1,24 @@
 
-
-import { useEffect,  } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
 import './App.scss';
-import CartList from './components/CartList/CartList';
+import {Route, Routes} from 'react-router-dom'
 import Header from './components/Header/Header';
-import Loader from './components/Loader/Loader';
+
 import Search from './components/Search/Search';
-import { getCountrys } from './store/worldSlice';
+import HomePage from './pages/HomePage';
+import ContryPage from './pages/ContryPage';
 
-function App() {
-  const country = useSelector(state => state.world.contrys)
-  const status = useSelector(state => state.world.status)
-  const dispatch = useDispatch()
 
-  useEffect(() => {
-      //axios.get(ALL_COUNTRY).then(res => setCountry(res.data))
-      dispatch(getCountrys())
-      
-  },[])
+const App = () => {
+ 
 
   return (
     <>
       <Header />
       <Search />
-      {status === 'loading' && <Loader />}
-      <CartList country={country} />
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/:name' element={<ContryPage />} />
+      </Routes>
     </>
   );
 }

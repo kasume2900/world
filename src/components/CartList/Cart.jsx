@@ -1,9 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import s from './cart.module.scss'
 
 const Cart = (props) => {
   return (
-    <div className={s.wrapper}>
+    <Link to={`/${props.name}`} >
+      <div className={s.wrapper}>
       <div className={s.image}>
         <img src={props.flags.png} alt="flag" />
       </div>
@@ -20,6 +22,7 @@ const Cart = (props) => {
         </div>
       </div>
     </div>
+    </Link>
   )
 }
 

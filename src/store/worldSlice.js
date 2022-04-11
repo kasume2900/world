@@ -4,6 +4,7 @@ import { ALL_COUNTRY } from '../API/config'
 
 const initialState = {
   contrys: [],
+  info : {},
   status: null,
   error : null,
 }
@@ -27,6 +28,10 @@ export const worldSlice = createSlice({
   name: 'world',
   initialState,
   reducers: {
+    getInfo(state,action){
+      const contryInfo = state.contrys.find(el => el.name === action.payload)
+      state.info = contryInfo
+    },
    
   },
   extraReducers : {
@@ -44,6 +49,6 @@ export const worldSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {  } = worldSlice.actions
+export const { getInfo } = worldSlice.actions
 
 export default worldSlice.reducer
