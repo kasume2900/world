@@ -4,13 +4,13 @@ import s from './cart.module.scss'
 
 const Cart = (props) => {
   return (
-    <Link to={`/${props.name}`} >
+    <Link to={`/${props.name.common}`} >
       <div className={s.wrapper}>
       <div className={s.image}>
         <img src={props.flags.png} alt="flag" />
       </div>
       <div className={s.bottomWrap}>
-        <div className={s.name}>{props.name}</div>
+        <div className={s.name}>{props.name.common}</div>
         <div className={s.population}>
           <span>Population :</span> {props.population}
         </div>

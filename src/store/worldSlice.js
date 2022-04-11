@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import axios from 'axios'
-import { ALL_COUNTRY } from '../API/config'
+import { ALL_COUNTRY, REGION } from '../API/config'
 
 const initialState = {
   contrys: [],
-  info : {},
+  info : null,
+  contry : null,
   status: null,
   error : null,
 }
@@ -24,14 +24,47 @@ export const getCountrys = createAsyncThunk(
   }
 )
 
+export const getContryInfo = createAsyncThunk(
+  'world/getContryInfo',
+  async function(name,{rejectWithValue}){
+    try {
+      const res = await fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
+      if(!res.ok) throw new Error('Server Error Info contry...')
+      const data = await res.json()
+      return data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
+export const filterByRegion = createAsyncThunk(
+  'world/filterByRegion',
+  async function(_,{rejectWithValue,getState}) {
+    try {
+      const res = await fetch(REGION + getState().world.contry)
+      if(!res.ok) throw new Error('Server Error Region FAILD ')
+      const data = await res.json()
+      return data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
+
 
 export const worldSlice = createSlice({
   name: 'world',
   initialState,
   reducers: {
     getInfo(state,action){
-      const contryInfo = state.contrys.find(el => el.name === action.payload)
+      const contryInfo = state.contrys.find(el => el.name.common === action.payload)
       state.info = contryInfo
+    },
+    
+    setContry(state,action){
+      state.contry = action.payload
     },
    
   },
@@ -45,11 +78,32 @@ export const worldSlice = createSlice({
       state.contrys = action.payload
     },
     [getCountrys.rejected] : (state) => {},
+
+    [getContryInfo.pending] : (state) => {
+      state.status = 'loading'
+      state.error = null
+    },
+    [getContryInfo.fulfilled] : (state,action) => {
+      state.status = 'resolved'
+      state.info = action.payload[0]
+    },
+    [getContryInfo.rejected] : (state) => {},
+
+    [filterByRegion.pending] : (state) => {
+      state.status = 'loading'
+      state.error = null
+    },
+    [filterByRegion.fulfilled] : (state,action) => {
+      state.status = 'resolved'
+      state.contrys = action.payload
+    },
+    [filterByRegion.rejected] : (state) => {},
+    
   }
   
 })
 
 // Action creators are generated for each case reducer function
-export const { getInfo } = worldSlice.actions
+export const { getInfo ,setContry} = worldSlice.actions
 
 export default worldSlice.reducer

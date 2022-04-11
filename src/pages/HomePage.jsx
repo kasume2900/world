@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCountrys } from '../store/worldSlice'
 import Loader from '../components/Loader/Loader'
 import CartList from '../components/CartList/CartList'
+import Search from '../components/Search/Search'
 
 const HomePage = () => {
 
@@ -11,14 +12,14 @@ const HomePage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-      //axios.get(ALL_COUNTRY).then(res => setCountry(res.data))
       dispatch(getCountrys())
       
-  },[])
+  },[dispatch])
 
 
   return (
     <>
+      <Search />
       {status === 'loading' && <Loader />}
       <CartList country={country} />
     </>

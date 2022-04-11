@@ -6,8 +6,8 @@ const CartList = (props) => {
   return (
     <div className='conteiner'>
       <div className={s.cartsWrapper}>
-        {
-          props.country.map(el => <Cart key={el.name} {...el} />)
+        { props.country &&
+          props.country.map(el => <Cart key={el.name.common} {...el} />)
         }
       </div>
     </div>

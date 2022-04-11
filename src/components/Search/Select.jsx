@@ -1,17 +1,24 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { filterByRegion, setContry } from '../../store/worldSlice'
 import s from './select.module.scss'
 
 
-const arr = ['Africa','Amirica','Asia','Europe','Oceania']
+const arr = ['Africa','Americas','Asia','Europe','Oceania']
 
 
 const Select = () => {
 
   const [vizible,setVizible] = useState(false)
-  const [coutry,setCountry] = useState('')
+  //const [coutry,setCountry] = useState('')
   const popapRef = useRef(null)
 
+  const dispatch = useDispatch()
+
+  const contry = useSelector(state => state.world.contry)
+
   useEffect(() => {
+    
 
     const handleClick = (e) => {
       if(!e.path.includes(popapRef.current)) {
@@ -35,14 +42,17 @@ const Select = () => {
     setVizible(!vizible)
   }
   const selectCounty = (e) => {
-    setCountry(e.target.innerText)
+    dispatch(setContry(e.target.innerText))
+    //setCountry(e.target.innerText)
     setVizible(false)
+    
+    dispatch(filterByRegion())
   }
 
   return (
     <div className={s.wrapper}>
       <div ref={popapRef} onClick={toggleVizible} className={s.top}>
-        <div className={s.title}>{coutry ? coutry : 'Filter by Region'}</div>
+        <div className={s.title}>{contry ? contry : 'Filter by Region'}</div>
         <div className={vizible ? `${s.active}` : `${s.icon}`}></div>
       </div>
       <div className={vizible ? s.bottomVizible : s.bottomBlock}>
