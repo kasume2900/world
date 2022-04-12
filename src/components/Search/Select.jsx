@@ -43,7 +43,6 @@ const Select = () => {
   }
   const selectCounty = (e) => {
     dispatch(setContry(e.target.innerText))
-    //setCountry(e.target.innerText)
     setVizible(false)
     
     dispatch(filterByRegion())

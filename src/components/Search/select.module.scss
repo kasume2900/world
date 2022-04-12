@@ -6,9 +6,9 @@
   }
 
   .top{
-    min-width: 130px;
+    min-width: 200px;
     background-color: var(--colorEl);
-    padding: 11px;
+    padding: 20px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,8 +26,8 @@
         display: block;
         content: '';
         position: absolute;
-        top: -1px;
-        right: -5px;
+        top: -2px;
+        right: 0;
         width: 7px;
         height: 7px;
         border-top: 1px solid var(--colorText);
@@ -42,7 +42,7 @@
         content: '';
         position: absolute;
         top: -5px;
-        right: -5px;
+        right: 0;
         width: 7px;
         height: 7px;
         border-top: 1px solid var(--colorText);
@@ -59,9 +59,9 @@
     background-color: var(--colorEl);
     padding: 10px;
     position: absolute;
-    top: 40px;
+    top: 60px;
     left: 0;
-    min-width: 130px;
+    min-width: 200px;
 
     .item{
       padding: 5px;

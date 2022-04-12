@@ -12,7 +12,7 @@ const SearchInput = () => {
     <div className={s.wrap}>
       <BsSearch style={{
         position: 'absolute',
-        top: 10,
+        top: 19,
         left: 15,
         color: 'var(--colorText)'
   }} />
