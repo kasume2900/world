@@ -1,22 +1,18 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { BsArrowLeft } from "react-icons/bs";
 import s from './contryPage.module.scss'
-import { Link, useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { getContryInfo, getInfo } from '../store/worldSlice'
+import { Link,  } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 import Info from '../components/Info.jsx/Info';
 
 
 
 const ContryPage = () => {
 
-  const dispatch = useDispatch()
-  const { name } = useParams()
   const info = useSelector(state => state.world.info)
   
-  useEffect(() => {
-    dispatch(getContryInfo(name))
-  },[])
+ 
   
 
   const status = useSelector(state => state.world.status)
@@ -32,7 +28,7 @@ const ContryPage = () => {
       </div>
       <div className={s.contentWrap}>
         <div className={s.image}>
-          {status === 'resolved' && <img src={info.flags.png} alt="flags" /> }
+          {status === 'resolved' && <img src={info.flags && info.flags.png} alt="flags" /> }
         </div>
         {
           status === 'resolved' && <Info info={info} />

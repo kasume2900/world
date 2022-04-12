@@ -3,7 +3,7 @@ import { ALL_COUNTRY, REGION } from '../API/config'
 
 const initialState = {
   contrys: [],
-  info : null,
+  info : {},
   contry : null,
   status: null,
   error : null,

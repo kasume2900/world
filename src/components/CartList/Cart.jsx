@@ -1,10 +1,18 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { getContryInfo } from '../../store/worldSlice'
 import s from './cart.module.scss'
 
 const Cart = (props) => {
+
+  const dispatch = useDispatch()
+  const clickByContry = () => {
+    dispatch(getContryInfo(props.name.common))
+  }
+
   return (
-    <Link to={`/${props.name.common}`} >
+    <Link onClick={clickByContry} to={`/${props.name.common}`} >
       <div className={s.wrapper}>
       <div className={s.image}>
         <img src={props.flags.png} alt="flag" />

@@ -12,7 +12,7 @@ const HomePage = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-      dispatch(getCountrys())
+    if(!country.length) dispatch(getCountrys())
       
   },[dispatch])
 
