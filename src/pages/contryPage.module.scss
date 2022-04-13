@@ -23,18 +23,36 @@
   justify-content: space-between;
   align-items: center;
   color: var(--colorText);
+  @media (max-width : 854px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   .image{
+    @media (max-width : 854px) {
+     margin-bottom: 30px;   
+    }
     img {
       display: block;
       width: 550px;
       object-fit: contain;
       box-shadow: 0px -1px 8px 7px var(--colorEl);
+      @media (max-width: 1313px) {
+        width: 400px;
+      }
+      @media (max-width: 1200px) {
+        width: 350px;
+      }
+      
     }
   }
 
   .info {
     width: 700px;
+    @media (max-width:1200px) {
+      margin-left: 30px;
+      width: auto;
+    }
 
     .name {
       color: var(--colorText);
@@ -46,12 +64,22 @@
 
     .borderContries{
       font-size: 20px;
+      .link{
+        padding: 5px 10px;
+        border-radius: 5px;
+        background-color:  var(--colorEl);
+        color: var(--colorText);
+        margin-right: 10px;
+      }
     }
 
     .infoRow {
       display: flex;
       justify-content: space-between;
       font-size: 20px;
+      @media (max-width:1200px) {
+        display: block;
+      }
       .columLeft{
         .item{
           margin-bottom: 15px;

@@ -1,17 +1,25 @@
 
+
+.link {
+  display: block;
+  width: 285px;
+  margin-right: 40px;
+}
+
 .wrapper {
-  max-width: 400px;
-  margin-right: 6rem;
+  //width: 285px;
+  //margin-right: 6rem;
+  //margin-right: 40px;
   margin-bottom: 70px;
   cursor: pointer;
 
   .image{
 
     img{
-      width: 270px;
+      width: 285px;
       height: 200px;
       object-fit: cover;
-      @media (max-width : 1200px) {
+      @media (max-width : 1918px) {
         
       }
     }

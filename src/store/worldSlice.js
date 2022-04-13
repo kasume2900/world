@@ -1,19 +1,31 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { ALL_COUNTRY, REGION } from '../API/config'
+import { ALL_COUNTRY, CODE, REGION, SEARCH_BY_NAME } from '../API/config'
 
 const initialState = {
   contrys: [],
   info : {},
+  search : '',
   contry : null,
   status: null,
   error : null,
 }
 
+// Helpers
+const setPanding = (state) => {
+  state.status = 'loading'
+  state.error = null
+} 
+
+const setError = (state,action) => {
+  state.status = 'rejected'
+  state.error = action.payload
+}
+
+// thunc
 export const getCountrys = createAsyncThunk(
   'world/getCountrys',
   async function(_,{rejectWithValue}) {
     try {
-      //axios.get(ALL_COUNTRY).then(res => res.data)
       const res = await fetch(ALL_COUNTRY)
       if(!res.ok) throw new Error('Server Error')
       const data = await res.json()
@@ -52,6 +64,35 @@ export const filterByRegion = createAsyncThunk(
   }
 )
 
+export const getContryByCode = createAsyncThunk(
+  'world/getContryByCode',
+  async function(code,{rejectWithValue}){
+    try {
+      const res = await fetch(CODE + code)
+      if(!res.ok) throw new Error('Server Error CODE - error')
+      const data = await res.json()
+      return data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
+export const searchByName = createAsyncThunk(
+  'world/searchByName',
+  async function(_,{rejectWithValue,getState}){
+    try {
+      const name = getState().world.search
+      const res = await fetch(SEARCH_BY_NAME + name)
+      if(!res.ok) throw new Error("Server error search not found ")
+      const data = await res.json()
+      return data
+    } catch (error) {
+      rejectWithValue(error.message)
+    }
+  }
+)
+
 
 
 export const worldSlice = createSlice({
@@ -62,48 +103,56 @@ export const worldSlice = createSlice({
       const contryInfo = state.contrys.find(el => el.name.common === action.payload)
       state.info = contryInfo
     },
-    
     setContry(state,action){
       state.contry = action.payload
     },
-   
+    setSearch(state,action){
+      state.search = action.payload
+    },
+    
   },
   extraReducers : {
-    [getCountrys.pending] : (state) => {
-      state.status = 'loading'
-      state.error = null
-    },
+    [getCountrys.pending] : setPanding,
     [getCountrys.fulfilled] : (state, action) => {
       state.status = 'resolved'
       state.contrys = action.payload
     },
-    [getCountrys.rejected] : (state) => {},
+    [getCountrys.rejected] : setError,
 
-    [getContryInfo.pending] : (state) => {
-      state.status = 'loading'
-      state.error = null
-    },
+    [getContryInfo.pending] : setPanding,
     [getContryInfo.fulfilled] : (state,action) => {
       state.status = 'resolved'
       state.info = action.payload[0]
     },
-    [getContryInfo.rejected] : (state) => {},
+    [getContryInfo.rejected] : setError,
 
-    [filterByRegion.pending] : (state) => {
-      state.status = 'loading'
-      state.error = null
-    },
+    [filterByRegion.pending] : setPanding,
     [filterByRegion.fulfilled] : (state,action) => {
       state.status = 'resolved'
       state.contrys = action.payload
     },
-    [filterByRegion.rejected] : (state) => {},
+    [filterByRegion.rejected] : setError,
+
+    [getContryByCode.pending] : setPanding,
+    [getContryByCode.fulfilled] : (state,action) => {
+      state.status = 'resolved'
+      state.info = action.payload[0]
+    },
+    [getContryByCode.rejected] : setError,
+
+    [searchByName.pending] : setPanding,
+    [searchByName.fulfilled] : (state,action) => {
+      state.status = 'resolved'
+      state.contrys = action.payload
+    },
+    [searchByName.rejected] : setError,
+
     
   }
   
 })
 
 // Action creators are generated for each case reducer function
-export const { getInfo ,setContry} = worldSlice.actions
+export const { getInfo ,setContry, setSearch} = worldSlice.actions
 
 export default worldSlice.reducer

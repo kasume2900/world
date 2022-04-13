@@ -1,12 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { BsSearch } from "react-icons/bs";
+import { useDispatch, useSelector } from 'react-redux';
+import { searchByName, setSearch } from '../../store/worldSlice';
 import s from './searchInput.module.scss'
 
 const SearchInput = () => {
 
-  const [search,setSerch] = useState('')
-
-  const changeSearch = (e) => setSerch(e.currentTarget.value)
+  const search = useSelector(state => state.world.search)
+  const dispatch = useDispatch()
+  const changeSearch = (e) => {
+    dispatch(setSearch(e.target.value))
+    dispatch(searchByName())
+  }
 
   return (
     <div className={s.wrap}>

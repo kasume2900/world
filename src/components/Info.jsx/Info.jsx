@@ -1,11 +1,17 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import s from '../../pages/contryPage.module.scss'
+import { getContryByCode } from '../../store/worldSlice'
 
 const Info = ({info}) => {
 
   //const info = useSelector(state => state.world.info)
+  const dispatch = useDispatch()
+
+  const handleClick = (e) => {
+    dispatch(getContryByCode(e.target.innerText))
+  }
 
 
   return (
@@ -44,7 +50,7 @@ const Info = ({info}) => {
     <div className={s.borderContries}>
       <span>Border Contries :</span>
       {
-        info.borders && info.borders.map(el => <Link to={`/${el}`} key={el}>{el}</Link>)
+        info.borders && info.borders.map(el => <Link onClick={handleClick} className={s.link} to={`/${el}`} key={el}>{el}</Link>)
       }
     </div>
   </div>
