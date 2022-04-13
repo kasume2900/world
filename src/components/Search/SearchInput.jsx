@@ -1,7 +1,7 @@
 import React from 'react'
 import { BsSearch } from "react-icons/bs";
 import { useDispatch, useSelector } from 'react-redux';
-import { searchByName, setSearch } from '../../store/worldSlice';
+import { getCountrys, searchByName, setSearch } from '../../store/worldSlice';
 import s from './searchInput.module.scss'
 
 const SearchInput = () => {
@@ -11,6 +11,7 @@ const SearchInput = () => {
   const changeSearch = (e) => {
     dispatch(setSearch(e.target.value))
     dispatch(searchByName())
+    if(search === '') dispatch(getCountrys())
   }
 
   return (

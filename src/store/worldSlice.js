@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { ALL_COUNTRY, CODE, REGION, SEARCH_BY_NAME } from '../API/config'
+import { ALL_COUNTRY, CODE, PARAMS, REGION, SEARCH_BY_NAME } from '../API/config'
 
 const initialState = {
   contrys: [],
@@ -54,7 +54,8 @@ export const filterByRegion = createAsyncThunk(
   'world/filterByRegion',
   async function(_,{rejectWithValue,getState}) {
     try {
-      const res = await fetch(REGION + getState().world.contry)
+      const name = getState().world.contry
+      const res = await fetch(REGION + name + PARAMS)
       if(!res.ok) throw new Error('Server Error Region FAILD ')
       const data = await res.json()
       return data
@@ -83,7 +84,7 @@ export const searchByName = createAsyncThunk(
   async function(_,{rejectWithValue,getState}){
     try {
       const name = getState().world.search
-      const res = await fetch(SEARCH_BY_NAME + name)
+      const res = await fetch(SEARCH_BY_NAME + name + PARAMS)
       if(!res.ok) throw new Error("Server error search not found ")
       const data = await res.json()
       return data
