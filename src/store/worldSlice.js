@@ -5,6 +5,7 @@ const initialState = {
   contrys: [],
   info : {},
   search : '',
+  searchBool : '',
   contry : null,
   status: null,
   error : null,
@@ -110,6 +111,10 @@ export const worldSlice = createSlice({
     setSearch(state,action){
       state.search = action.payload
     },
+    setSearchBool(state){
+      if (state.search) state.searchBool = 'searching'
+      if (!state.search) state.searchBool = 'endSearch'
+    },
     
   },
   extraReducers : {
@@ -154,6 +159,6 @@ export const worldSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { getInfo ,setContry, setSearch} = worldSlice.actions
+export const { getInfo ,setContry, setSearch,setSearchBool} = worldSlice.actions
 
 export default worldSlice.reducer

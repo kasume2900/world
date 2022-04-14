@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BsSearch } from "react-icons/bs";
 import { useDispatch, useSelector } from 'react-redux';
-import { getCountrys, searchByName, setSearch } from '../../store/worldSlice';
+import { getCountrys, searchByName, setSearch, setSearchBool } from '../../store/worldSlice';
 import s from './searchInput.module.scss'
 
 const SearchInput = () => {
 
   const search = useSelector(state => state.world.search)
+  const searchBool = useSelector(state => state.world.searchBool)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if(searchBool === 'endSearch') dispatch(getCountrys())
+  },[searchBool])
+
   const changeSearch = (e) => {
     dispatch(setSearch(e.target.value))
     dispatch(searchByName())
-    if(search === '') dispatch(getCountrys())
+    dispatch(setSearchBool())
   }
 
   return (
