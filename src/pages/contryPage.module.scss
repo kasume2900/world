@@ -65,11 +65,13 @@
     .borderContries{
       font-size: 20px;
       .link{
+        display: inline-block;
         padding: 5px 10px;
         border-radius: 5px;
         background-color:  var(--colorEl);
         color: var(--colorText);
         margin-right: 10px;
+        margin-bottom: 10px;
       }
     }
 
