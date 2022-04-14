@@ -12,7 +12,7 @@ const Cart = (props) => {
   }
 
   return (
-    <Link className={s.link} onClick={clickByContry} to={`/${props.name.common}`} >
+    <Link className={s.link} onClick={clickByContry} to={`/contry/${props.name.common}`} >
       <div className={s.wrapper}>
       <div className={s.image}>
         <img src={props.flags.png} alt="flag" />

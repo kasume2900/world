@@ -50,7 +50,7 @@ const Info = ({info}) => {
     <div className={s.borderContries}>
       <span>Border Contries :</span>
       {
-        info.borders && info.borders.map(el => <Link onClick={handleClick} className={s.link} to={`/${el}`} key={el}>{el}</Link>)
+        info.borders && info.borders.map(el => <Link onClick={handleClick} className={s.link} to={`/contry/${el}`} key={el}>{el}</Link>)
       }
     </div>
   </div>

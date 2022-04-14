@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import s from './header.module.scss'
 import { BsMoon } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
@@ -17,7 +18,7 @@ const Header = () => {
     <header>
       <div className="conteiner">
         <div className={s.wrap}>
-          <p>Where in the world ?</p>
+          <Link to='/' className={s.link} >Where in the world ?</Link>
           <div onClick={toogleTheme} className={s.theme}>
             {
               theme === 'light'

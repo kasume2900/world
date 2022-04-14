@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 
 import HomePage from './pages/HomePage';
 import ContryPage from './pages/ContryPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 
 const App = () => {
@@ -17,7 +18,8 @@ const App = () => {
       
       <Routes>
         <Route path='/' element={<HomePage />} />
-        <Route path='/:name' element={<ContryPage />} />
+        <Route path='*' element={<NotFoundPage />} />
+        <Route path='contry/:name' element={<ContryPage />} />
       </Routes>
     </>
   );
