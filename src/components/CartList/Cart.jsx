@@ -1,14 +1,14 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getContryInfo } from '../../store/worldSlice'
+import { clearInfo } from '../../store/worldSlice'
 import s from './cart.module.scss'
 
 const Cart = (props) => {
 
   const dispatch = useDispatch()
   const clickByContry = () => {
-    dispatch(getContryInfo(props.name.common))
+    dispatch(clearInfo())
   }
 
   return (

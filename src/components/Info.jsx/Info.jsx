@@ -2,15 +2,15 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import s from '../../pages/contryPage.module.scss'
-import { getContryByCode } from '../../store/worldSlice'
+import { clearInfo } from '../../store/worldSlice'
 
 const Info = ({info}) => {
 
-  //const info = useSelector(state => state.world.info)
   const dispatch = useDispatch()
+  
 
   const handleClick = (e) => {
-    dispatch(getContryByCode(e.target.innerText))
+    dispatch(clearInfo())
   }
 
 

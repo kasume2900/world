@@ -3,7 +3,7 @@ import { ALL_COUNTRY, CODE, PARAMS, REGION, SEARCH_BY_NAME } from '../API/config
 
 const initialState = {
   contrys: [],
-  info : {},
+  info : undefined,
   search : '',
   searchBool : '',
   contry : null,
@@ -115,6 +115,11 @@ export const worldSlice = createSlice({
       if (state.search) state.searchBool = 'searching'
       if (!state.search) state.searchBool = 'endSearch'
     },
+    clearInfo(state){
+      state.info = undefined
+    },
+
+
     
   },
   extraReducers : {
@@ -159,6 +164,6 @@ export const worldSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { getInfo ,setContry, setSearch,setSearchBool} = worldSlice.actions
+export const { getInfo ,setContry, setSearch,setSearchBool,clearInfo} = worldSlice.actions
 
 export default worldSlice.reducer
